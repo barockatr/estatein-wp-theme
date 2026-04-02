@@ -1,37 +1,31 @@
 <?php
 /**
- * Agencia Figma functions and definitions
+ * Estatein functions and definitions
+ *
+ * @package Estatein
  */
 
-if ( ! function_exists( 'agencia_figma_setup' ) ) :
+if ( ! function_exists( 'estatein_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 */
-	function agencia_figma_setup() {
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
-
-		/*
-		 * Let WordPress manage the document title.
-		 */
+	function estatein_setup() {
 		add_theme_support( 'title-tag' );
-
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 */
 		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'custom-logo', array(
+			'height'      => 250,
+			'width'       => 250,
+			'flex-width'  => true,
+			'flex-height' => true,
+		) );
 
-		// Register Main Navigation Menu
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary Menu', 'agencia-figma' ),
+				'header-menu' => esc_html__( 'Header Menu', 'estatein' ),
+				'footer-menu' => esc_html__( 'Footer Menu', 'estatein' ),
 			)
 		);
 
-		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
-		 */
 		add_theme_support(
 			'html5',
 			array(
@@ -46,16 +40,174 @@ if ( ! function_exists( 'agencia_figma_setup' ) ) :
 		);
 	}
 endif;
-add_action( 'after_setup_theme', 'agencia_figma_setup' );
+add_action( 'after_setup_theme', 'estatein_setup' );
 
 /**
  * Enqueue scripts and styles.
  */
-function agencia_figma_scripts() {
-	// Standard Theme Style
-	wp_enqueue_style( 'agencia-figma-style', get_stylesheet_uri(), array(), '1.0.0' );
-
-	// Tailwind CSS CDN
-	wp_enqueue_script( 'tailwind-cdn', 'https://cdn.tailwindcss.com', array(), '3.4.1', false );
+function estatein_scripts() {
+	wp_enqueue_style( 'estatein-style', get_stylesheet_uri(), array(), '1.1.0' );
 }
-add_action( 'wp_enqueue_scripts', 'agencia_figma_scripts' );
+add_action( 'wp_enqueue_scripts', 'estatein_scripts' );
+
+/**
+ * Register Custom Post Types
+ */
+function estatein_register_cpts() {
+	// Properties (Inmuebles)
+	register_post_type( 'properties', array(
+		'labels' => array(
+			'name'          => __( 'Inmuebles', 'estatein' ),
+			'singular_name' => __( 'Inmueble', 'estatein' ),
+		),
+		'public'      => true,
+		'has_archive' => true,
+		'menu_icon'   => 'dashicons-admin-home',
+		'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+		'show_in_rest' => true,
+	) );
+
+	// Testimonials (Reseñas)
+	register_post_type( 'testimonials', array(
+		'labels' => array(
+			'name'          => __( 'Reseñas', 'estatein' ),
+			'singular_name' => __( 'Reseña', 'estatein' ),
+		),
+		'public'      => true,
+		'menu_icon'   => 'dashicons-testimonial',
+		'supports'    => array( 'title', 'editor' ),
+		'show_in_rest' => true,
+	) );
+
+	// FAQs (Preguntas Frecuentes)
+	register_post_type( 'faqs', array(
+		'labels' => array(
+			'name'          => __( 'Preguntas Frecuentes', 'estatein' ),
+			'singular_name' => __( 'Pregunta Frecuente', 'estatein' ),
+		),
+		'public'      => true,
+		'menu_icon'   => 'dashicons-editor-help',
+		'supports'    => array( 'title', 'editor' ),
+		'show_in_rest' => true,
+	) );
+
+	// Team Members (Equipo)
+	register_post_type( 'team', array(
+		'labels' => array(
+			'name'          => __( 'Equipo de Trabajo', 'estatein' ),
+			'singular_name' => __( 'Miembro de Equipo', 'estatein' ),
+		),
+		'public'      => true,
+		'menu_icon'   => 'dashicons-groups',
+		'supports'    => array( 'title', 'editor', 'thumbnail' ),
+		'show_in_rest' => true,
+	) );
+
+	// Services (Servicios)
+	register_post_type( 'services', array(
+		'labels' => array(
+			'name'          => __( 'Servicios', 'estatein' ),
+			'singular_name' => __( 'Servicio', 'estatein' ),
+		),
+		'public'      => true,
+		'menu_icon'   => 'dashicons-admin-tools',
+		'supports'    => array( 'title', 'editor', 'thumbnail' ),
+		'show_in_rest' => true,
+	) );
+}
+add_action( 'init', 'estatein_register_cpts' );
+
+/**
+ * REGISTER ACF LOCAL FIELD GROUPS (Professional Backend Implementation)
+ */
+if ( function_exists( 'acf_add_local_field_group' ) ) :
+
+	// Property Details Fields
+	acf_add_local_field_group( array(
+		'key' => 'group_property_details',
+		'title' => 'Detalles del Inmueble',
+		'fields' => array(
+			array(
+				'key' => 'field_property_price',
+				'label' => 'Precio',
+				'name' => 'property_price',
+				'type' => 'text',
+				'description' => 'Ej: $500,000',
+			),
+			array(
+				'key' => 'field_property_location',
+				'label' => 'Ubicación',
+				'name' => 'property_location',
+				'type' => 'text',
+				'description' => 'Ej: Malibu, CA',
+			),
+			array(
+				'key' => 'field_property_bedrooms',
+				'label' => 'Habitaciones',
+				'name' => 'property_bedrooms',
+				'type' => 'number',
+				'wrapper' => array( 'width' => '33' ),
+			),
+			array(
+				'key' => 'field_property_bathrooms',
+				'label' => 'Baños',
+				'name' => 'property_bathrooms',
+				'type' => 'number',
+				'wrapper' => array( 'width' => '33' ),
+			),
+			array(
+				'key' => 'field_property_size',
+				'label' => 'Superficie (m2)',
+				'name' => 'property_size',
+				'type' => 'text',
+				'wrapper' => array( 'width' => '33' ),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'properties',
+				),
+			),
+		),
+	) );
+
+	// Hero Section Fields (Home)
+	acf_add_local_field_group( array(
+		'key' => 'group_hero_home',
+		'title' => 'Gestión del Hero (Home)',
+		'fields' => array(
+			array(
+				'key' => 'field_hero_title',
+				'label' => 'Título del Hero',
+				'name' => 'hero_title',
+				'type' => 'text',
+			),
+			array(
+				'key' => 'field_hero_description',
+				'label' => 'Descripción',
+				'name' => 'hero_description',
+				'type' => 'textarea',
+			),
+			array(
+				'key' => 'field_hero_image',
+				'label' => 'Imagen de Fondo',
+				'name' => 'hero_image',
+				'type' => 'image',
+				'return_format' => 'url',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'page_type',
+					'operator' => '==',
+					'value' => 'front_page',
+				),
+			),
+		),
+	) );
+
+endif;

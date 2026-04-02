@@ -1,9 +1,13 @@
 /*
-Theme Name: Agencia Figma
-Theme URI: https://agencia-figma.com
-Author: Antigravity Senior Developer
-Author URI: https://antigravity.ai
-Description: Custom theme for Agencia Figma technical assessment. Built with Tailwind CSS.
+Theme Name: Estatein
+Theme URI: https://estatein.com
+Author: Estatein Team
+Author URI: https://estatein.com
+Description: Una plataforma inmobiliaria de vanguardia que simplifica la compra, venta y alquiler de propiedades. Construido con WordPress y Tailwind CSS.
 Version: 1.0.0
-Text Domain: agencia-figma
+Text Domain: estatein
 */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
