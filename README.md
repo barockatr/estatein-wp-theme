@@ -1,52 +1,43 @@
-# Estatein - Real Estate WordPress Theme 🏠✨
+# Estatein - Premium Real Estate WordPress Theme 📈✨
 
-Este es un tema personalizado de **WordPress** desarrollado desde cero para una plataforma inmobiliaria de vanguardia, siguiendo estrictamente los requerimientos de diseño de **Figma** y las mejores prácticas de la industria.
-
----
-
-## 🚀 Resumen del Proyecto
-**Estatein** es una solución robusta y escalable que combina un backend potente y flexible (vía ACF y CPTs) con una interfaz de usuario premium, optimizada y totalmente responsiva.
-
-### 🛠️ Tecnologías Utilizadas
-- **WordPress 6.x Core**: Base estable y optimizada.
-- **Tailwind CSS (Proceso JIT)**: Para un diseño rápido, modular y sin CSS innecesario.
-- **Advanced Custom Fields (ACF)**: Arquitectura de datos dinámica para facilitar la gestión al cliente.
-- **PHP 8.x + HTML5/CSS3**: Código limpio y semántico.
-- **Google Fonts (Outfit)**: Tipografía moderna y de alto rendimiento.
+This is a high-fidelity custom WordPress theme developed for the **Agencia Figma** assessment. The project transforms a static design into a dynamic, scalable, and optimized real estate platform.
 
 ---
 
-## 🏗️ Arquitectura de Datos
-Para asegurar que el sitio sea fácil de mantener y escalar, se han implementado **Custom Post Types (CPT)** que separan las preocupaciones de contenido:
-
-- **Inmuebles (properties)**: Gestión detallada de casas, apartamentos y terrenos con metadatos específicos (precio, habitaciones, baños, m2).
-- **Reseñas (testimonials)**: Social proof administrable.
-- **Preguntas Frecuentes (faqs)**: Soporte interactivo para el usuario.
-- **Equipo de Trabajo (team)**: Presentación profesional de agentes y expertos.
-- **Servicios (services)**: Catálogo dinámico de soluciones inmobiliarias.
+## ✅ Fulfilled Requirements
+- [x] **Figma Fidelity**: Pixel-perfect implementation of **Home, Services, Contact, and About** pages.
+- [x] **Dynamic Architecture**: Automatic registration of 5 Custom Post Types and ACF field groups (via PHP for portability).
+- [x] **Premium UI/UX**: Dark mode aesthetics, purple gradients, micro-animations, and *Outfit* typography.
+- [x] **Fluid Navigation**: Fully functional header and 6-column footer layouts.
+- [x] **Performance**: Tailwind CSS integration for a modern, lightweight frontend.
 
 ---
 
-## 💎 Decisiones Técnicas y de Diseño
-- **Mobile-First & Fluid Design**: Implementación de una rejilla responsiva que garantiza una experiencia impecable en móviles, tablets y escritorios de gran escala.
-- **Premium Dark Aesthetics**: Uso de una paleta de colores curada (`#1A1A1A`) con efectos de **backdrop-blur** y micro-animaciones en botones y tarjetas para aumentar el *engagement* del usuario.
-- **SEO & Accesibilidad (A11y)**:
-  - Estructura de encabezados (`H1`, `H2`, `H3`) optimizada para motores de búsqueda.
-  - Atributos `aria-label` y roles semánticos para mejorar la inclusión.
-  - Optimización de imágenes con atributos `alt` dinámicos.
+## 🛠️ Technology Stack
+- **Core**: WordPress + PHP + Tailwind CSS + ACF.
+- **Approach**: Mobile-First with a fluid responsive grid.
+- **Code Quality**: Clean logic in `functions.php` and modular template parts.
 
 ---
 
-## 📖 Instrucciones de Instalación
-1. Descarga el repositorio en tu carpeta `/wp-content/themes/`.
-2. Activa el tema **Estatein** desde el escritorio de WordPress.
-3. Asegúrate de tener instalado el plugin **Advanced Custom Fields (ACF)** para que los campos de metadatos funcionen correctamente (hemos incluido la lógica de registro vía PHP en `functions.php`).
-4. Ve a **Ajustes > Enlaces Permanentes** y haz clic en "Guardar cambios" para refrescar las reglas de reescritura de los CPTs.
+## 📖 Installation Instructions
+
+### 1. Theme Activation
+1.  Place the theme folder in `wp-content/themes/agencia-figma`.
+2.  Activate the **Estatein** theme from the WordPress Dashboard.
+3.  **Essential**: Ensure the **Advanced Custom Fields (ACF)** plugin is installed and active.
+
+### 2. Initial Setup
+- **Permalinks**: Go to `Settings > Permalinks` and click **Save Changes**. This flushes the rewrite rules so Custom Post Types (Properties) work without 404 errors.
+- **Page Creation**: Create pages for **"Services"**, **"Contact"**, and **"About"**. Assign their respective templates under the "Page Attributes" section (e.g., "Our Services", "Contact Us").
 
 ---
 
-## 👨‍💻 Autor y Proceso de Desarrollo
-Este tema fue desarrollado siguiendo un flujo de trabajo profesional por **barockatr**, enfocado en la fidelidad del diseño, la calidad del código y la experiencia de usuario.
+## ⚠️ Important Note: Dynamic Content
+The theme is ready to display real data. For the best evaluation experience, it is recommended to:
+- Add at least 3 **Properties** with featured images and metadata (Price, Location).
+- Add 1-2 members to the **Team** section.
+- Add a few entries to **Services** and **Testimonials**.
 
 ---
-© 2024 Estatein Team. Todos los derechos reservados.
+© 2024 Estatein Team - Developed by **barockatr**.

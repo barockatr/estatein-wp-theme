@@ -54,11 +54,11 @@ add_action( 'wp_enqueue_scripts', 'estatein_scripts' );
  * Register Custom Post Types
  */
 function estatein_register_cpts() {
-	// Properties (Inmuebles)
+	// Properties (Properties CPT)
 	register_post_type( 'properties', array(
 		'labels' => array(
-			'name'          => __( 'Inmuebles', 'estatein' ),
-			'singular_name' => __( 'Inmueble', 'estatein' ),
+			'name'          => __( 'Properties', 'estatein' ),
+			'singular_name' => __( 'Property', 'estatein' ),
 		),
 		'public'      => true,
 		'has_archive' => true,
@@ -67,11 +67,11 @@ function estatein_register_cpts() {
 		'show_in_rest' => true,
 	) );
 
-	// Testimonials (Reseñas)
+	// Testimonials
 	register_post_type( 'testimonials', array(
 		'labels' => array(
-			'name'          => __( 'Reseñas', 'estatein' ),
-			'singular_name' => __( 'Reseña', 'estatein' ),
+			'name'          => __( 'Testimonials', 'estatein' ),
+			'singular_name' => __( 'Testimonial', 'estatein' ),
 		),
 		'public'      => true,
 		'menu_icon'   => 'dashicons-testimonial',
@@ -103,11 +103,11 @@ function estatein_register_cpts() {
 		'show_in_rest' => true,
 	) );
 
-	// Services (Servicios)
+	// Services (Business Services)
 	register_post_type( 'services', array(
 		'labels' => array(
-			'name'          => __( 'Servicios', 'estatein' ),
-			'singular_name' => __( 'Servicio', 'estatein' ),
+			'name'          => __( 'Business Services', 'estatein' ),
+			'singular_name' => __( 'Service', 'estatein' ),
 		),
 		'public'      => true,
 		'menu_icon'   => 'dashicons-admin-tools',
@@ -125,7 +125,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	// Property Details Fields
 	acf_add_local_field_group( array(
 		'key' => 'group_property_details',
-		'title' => 'Detalles del Inmueble',
+		'title' => 'Property details',
 		'fields' => array(
 			array(
 				'key' => 'field_property_price',

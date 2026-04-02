@@ -24,6 +24,7 @@
 		}
 	</script>
 	<style>
+		html { scroll-behavior: smooth; }
 		body { font-family: 'Outfit', sans-serif; }
 		.header-menu-container ul { display: flex; gap: 2rem; }
 		.header-menu-container li a { color: #999999; transition: color 0.3s; font-size: 0.875rem; font-weight: 500; }
