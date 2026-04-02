@@ -40,7 +40,7 @@ get_header(); ?>
 					<div class="text-gray-400 leading-relaxed mb-8">
 						<?php the_content(); ?>
 					</div>
-					<a href="/contacto" class="inline-flex items-center gap-2 text-sm font-bold text-white uppercase tracking-widest hover:text-[#703BF7] transition-colors">
+					<a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>" class="inline-flex items-center gap-2 text-sm font-bold text-white uppercase tracking-widest hover:text-[#703BF7] transition-colors">
 						<?php _e( 'Saber Más', 'estatein' ); ?>
 						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
 					</a>
@@ -49,7 +49,7 @@ get_header(); ?>
 			endwhile;
 			wp_reset_postdata();
 		else :
-			// Fallback generic services if none registered
+			// Fallback generic services
 			$fallback_services = [
 				['Valoración de Propiedades', 'Obtén un informe detallado del valor de tu mercado actual.'],
 				['Gestión de Alquileres', 'Nos encargamos de todo el proceso para que no tengas que preocuparte.'],
@@ -76,7 +76,7 @@ get_header(); ?>
 			<div class="absolute -top-24 -left-24 w-64 h-64 bg-[#703BF7]/10 blur-3xl rounded-full"></div>
 			<h2 class="text-3xl md:text-5xl font-bold text-white mb-8 relative z-10"><?php _e( '¿Listo para empezar tu búsqueda?', 'estatein' ); ?></h2>
 			<p class="text-gray-400 mb-10 max-w-xl mx-auto relative z-10"><?php _e( 'Estamos aquí para ayudarte a encontrar la propiedad de tus sueños con la mayor facilidad y rapidez posible.', 'estatein' ); ?></p>
-			<a href="/contacto" class="inline-block px-10 py-5 bg-[#703BF7] text-white font-bold rounded-xl hover:bg-[#5B2FD1] transition-all shadow-lg shadow-purple-500/20 relative z-10">
+			<a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>" class="inline-block px-10 py-5 bg-[#703BF7] text-white font-bold rounded-xl hover:bg-[#5B2FD1] transition-all shadow-lg shadow-purple-500/20 relative z-10">
 				<?php _e( 'Contactar ahora', 'estatein' ); ?>
 			</a>
 		</div>

@@ -7,6 +7,20 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						'estatein-purple': '#703BF7',
+						'estatein-dark': '#141414',
+						'estatein-card': '#1A1A1A',
+					}
+				}
+			}
+		}
+	</script>
 	<style>
 		body { font-family: 'Outfit', sans-serif; }
 		.header-menu-container ul { display: flex; gap: 2rem; }
@@ -46,7 +60,7 @@
 			</div>
 
 			<!-- Navigation Centered -->
-			<nav id="site-navigation" class="main-navigation hidden lg:block header-menu-container">
+			<nav id="site-navigation" class="main-navigation hidden lg:block header-menu-container" aria-label="Main Navigation">
 				<?php
 				wp_nav_menu(
 					array(
@@ -65,8 +79,8 @@
 				</a>
 				
 				<!-- Mobile Menu Toggle -->
-				<button type="button" class="lg:hidden text-white hover:text-[#703BF7] focus:outline-none p-2 rounded-lg bg-white/5">
-					<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				<button type="button" class="lg:hidden text-white hover:text-[#703BF7] focus:outline-none p-2 rounded-lg bg-white/5" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle navigation">
+					<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
 					</svg>
 				</button>
